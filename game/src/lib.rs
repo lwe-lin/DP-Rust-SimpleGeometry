@@ -7,7 +7,8 @@ use fyrox::{
     gui::{message::UiMessage, UserInterface},
     plugin::{Plugin, PluginContext, PluginRegistrationContext, error::GameResult},
 };
-
+use role_move::RoleMove;
+pub mod role_move;
 // Re-export the engine.
 pub use fyrox;
 
@@ -16,8 +17,12 @@ pub use fyrox;
 pub struct Game { }
 
 impl Plugin for Game {
-    fn register(&self, _context: PluginRegistrationContext) -> GameResult {
+    fn register(&self, context: PluginRegistrationContext) -> GameResult {
         // Register your scripts here.
+        context
+            .serialization_context
+            .script_constructors
+            .add::<RoleMove>("Role Move");
         Ok(())
     }
 
