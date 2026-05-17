@@ -16,6 +16,7 @@ use fyrox::keyboard::KeyCode;
 pub struct RoleMove {
     // Add fields here.
     is_jump: bool,
+    timer: u32,
 }
 
 impl ScriptTrait for RoleMove {
