@@ -31,8 +31,10 @@ const callback = function (mutationsList, observer) {
                             canvas.width = width * dpr;
                             canvas.height = height * dpr;
 
+                            window.removeEventListener('resize', resizeFyroxCanvas);
                             // 4. 通知 Fyrox 內部的 Winit 引擎，解析度已經改變，請重新計算畫面
                             window.dispatchEvent(new Event('resize'));
+                            window.addEventListener('resize', resizeFyroxCanvas);
                         }
 
                         // 監聽您最初詢問的視窗大小變化事件
